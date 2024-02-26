@@ -1,22 +1,22 @@
-/* Escenario y logica principal del juego */
-import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+import Svg, { Rect } from 'react-native-svg';
 
 const radianesAGrados = radianes => {
   return (radianes * 180) / Math.PI;
 };
 
 const Scene = () => {
-  const [angle, setAngle] = useState(0);
+  const [position, setPosition] = useState(0);
 
   useEffect(() => {
     let subscription;
     const _subscribe = async () => {
       subscription = Accelerometer.addListener(accelerometerData => {
-        const { x, y, z } = accelerometerData;
-        const angle = radianesAGrados(Math.atan2(y, Math.sqrt(x * x + z * z)));
-        setAngle(angle);
+        const { y, z } = accelerometerData;
+        const angle = radianesAGrados(Math.atan2(y, Math.sqrt(y * y + z * z)));
+        setPosition(prevPosition => prevPosition + Math.round(angle/3));
       });
     };
 
@@ -28,9 +28,16 @@ const Scene = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Ángulo de Inclinación (grados):</Text>
-      <Text>{angle.toFixed(2)}</Text>
+    <View style={{ flex: 1, backgroundColor: '#111'}}>
+      <Svg width="100%" height="100%">
+        <Rect
+          x={0}
+          y={position}
+          width={50}
+          height={50}
+          fill="black"
+        />
+      </Svg>
     </View>
   );
 };

@@ -9,13 +9,13 @@ const StaticObject = (props) => {
 
   // Establecer estilos
   const stylesheet = {
-    width: datasheet.size.h,
-    height: datasheet.size.w,
+    width: datasheet.size.h + '%',
+    height: datasheet.size.w + '%',
     backgroundColor: '#000',
     // Posicionamiento en funcion de datasheet
     position: 'absolute',
-    top: datasheet.position.x,
-    left: datasheet.position.y
+    top: datasheet.position.x + '%',
+    left: datasheet.position.y + '%'
   };
 
   // renderizado

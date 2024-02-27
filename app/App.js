@@ -1,5 +1,5 @@
 import { View, StyleSheet } from 'react-native';
-import Scene from './Scene.js';
+import Scene from './game/Scene.js';
 
 const App = () => {
   return (

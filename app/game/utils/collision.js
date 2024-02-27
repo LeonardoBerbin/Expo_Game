@@ -9,7 +9,7 @@
 const base = (a, b, c, d) => {
    return (array, object, speed) => {
     // Ajustar condicion segun el eje 
-    const condition = a === 'x' ? (speed > 0) : (speed < 0);
+    const condition = a === 'x' ? (speed >= 0) : (speed <= 0);
     
      // Encuentra el objeto mas cercano
     const closest = array.filter(e => {

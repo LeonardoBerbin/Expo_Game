@@ -9,7 +9,7 @@ import collision from './collision.js';
  * jumpForce: fuerza anti gravedad de signo positivo
 */ 
 const gravity = (array, object, jumpForce=0) => {
-  const g = -0.01;
+  const g = -0.1;
   object.gravity = {
     force: 0, 
     // Esta funcion debe ser invocada solo una vez en el constructor del objeto, siempre que ya se haya establecido la frecuencia de renderizado
